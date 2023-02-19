@@ -1,0 +1,23 @@
+
+import datetime
+import time
+
+# Get the current date and time
+now = datetime.datetime.now()
+
+# Calculate the time until Monday 8pm
+days_to_monday = (7 - now.weekday()) % 7
+time_to_monday = datetime.timedelta(days=days_to_monday, hours=20) - \
+                datetime.timedelta(hours=now.hour, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)
+
+# Start the countdown loop
+while time_to_monday > datetime.timedelta():
+    # Print the remaining time
+    print(f"Time until Monday 8pm: {time_to_monday}")
+    # Wait for 1 second
+    time.sleep(1)
+    # Update the remaining time
+    time_to_monday -= datetime.timedelta(seconds=1)
+
+# Countdown is over, print the final message
+print("It's Monday 8pm!")
